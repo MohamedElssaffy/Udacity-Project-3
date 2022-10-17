@@ -163,11 +163,9 @@ jobs:
             apk add --update ansible
             pip3 install awscli
       - run:
-          name: navigate to ansible dir
-          command: cd .circleci/ansible
-      - run:
           name: Configure server
           command: |
+            cd .circleci/ansible
             ls
             ansible-playbook -i inventory.txt configure-server.yml
       - destroy-environment:
