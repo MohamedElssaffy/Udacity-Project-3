@@ -148,6 +148,30 @@ jobs:
           frontend: udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}
           backend: udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}
 
+  configure-infrastructure:
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints: ['84:32:c9:7d:de:c0:d3:09:47:a5:74:24:26:b8:d7:a8']
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --update ansible
+      - run:
+          name: navigate to ansible dir
+          command: cd .circleci/ansible
+      - run:
+          name: Configure server
+          command: |
+            ansible-playbook -i inventory.txt playbook.yml
+      - destroy-environment:
+          frontend: udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}
+          backend: udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}
+
 workflows:
   default:
     jobs:
@@ -166,3 +190,5 @@ workflows:
           filters:
             branches:
               only: [master]
+      - configure-infrastructure:
+          requires: [deploy-infrastructure]
