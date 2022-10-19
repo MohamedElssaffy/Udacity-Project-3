@@ -1,0 +1,24 @@
+---
+- name: copy backend zipped file
+  copy:
+    src: ~/
+    dest: ~/
+
+- name: install zip and unziped
+  become: true
+  apt:
+    name: [zip, unzip]
+    state: latest
+    update_cache: yes
+
+- name: unzipped backend
+  shell: |
+    ls
+    unzip backend.zip
+
+- name: start the app
+  shell: |
+    cd backend
+    npm install
+    pm2 stop default
+    pm2 start npm -- start
