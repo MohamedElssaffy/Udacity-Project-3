@@ -1,8 +1,8 @@
 ---
 - name: copy backend zipped file
   copy:
-    src: ~/
-    dest: ~/
+    src: ~/backend.zip
+    dest: ~/backend.zip
 
 - name: install zip and unziped
   become: true
