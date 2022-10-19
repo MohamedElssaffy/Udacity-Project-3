@@ -288,11 +288,12 @@ jobs:
           command: |
             cd .circleci/ansible
             echo "34.201.91.206" >> inventory.txt
-            export BACKEND_IP=$(grep -v '^\[' inventory.txt)
-            echo $(grep -v '^\[' inventory.txt)
+
       - run:
           name: Backend smoke test.
           command: |
+            export BACKEND_IP=$(grep -v '^\[' .circleci/ansible/inventory.txt)
+            echo $(grep -v '^\[' inventory.txt)
             export API_URL="http://${BACKEND_IP}:3030"
             echo "${API_URL}"
             if curl "${API_URL}/api/status" | grep "ok"
