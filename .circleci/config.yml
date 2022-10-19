@@ -251,7 +251,9 @@ jobs:
           name: Install dependencies
           command: |
             apk add --update ansible
-            apk add nodejs npm tar gzip
+            apk add nodejs npm tar gzip curl
+            # for destroy environments
+            pip3 install awscli
       - run:
           name: Deploy backend
           command: |
@@ -267,6 +269,7 @@ jobs:
             echo "Contents  of the inventory.txt file is -------"
             cat inventory.txt
             ansible-playbook -i inventory.txt deploy-backend.yml
+            no_output_timeout: 30m
       - destroy-environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
       - revert-migrations:
