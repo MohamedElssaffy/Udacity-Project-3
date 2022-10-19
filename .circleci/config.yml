@@ -281,10 +281,13 @@ jobs:
           command: |
             apk add curl
             pip3 install awscli
+      - attach_workspace:
+          at: ~/
       - run:
           name: Get backend url
           command: |
-            export BACKEND_IP=$(grep -v '^\[' .env | xargs)
+            cd .circleci/ansible
+            export BACKEND_IP=$(grep -v '^\[' inventory.txt | xargs)
       - run:
           name: Backend smoke test.
           command: |
