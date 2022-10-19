@@ -279,7 +279,8 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apt add curl
+            apk add curl
+            pipe3 install awscli
       - run:
           name: Get backend url
           command: |
