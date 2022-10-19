@@ -280,7 +280,7 @@ jobs:
           name: Install dependencies
           command: |
             apk add curl
-            pipe3 install awscli
+            pip3 install awscli
       - run:
           name: Get backend url
           command: |
