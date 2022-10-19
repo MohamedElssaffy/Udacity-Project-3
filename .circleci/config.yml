@@ -288,6 +288,7 @@ jobs:
           command: |
             cd .circleci/ansible
             export BACKEND_IP=$(grep -v '^\[' inventory.txt)
+            echo $(grep -v '^\[' inventory.txt)
       - run:
           name: Backend smoke test.
           command: |
