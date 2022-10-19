@@ -1,20 +1,13 @@
 ---
 - name: copy backend zipped file
   copy:
-    src: ~/backend.zip
-    dest: ~/backend.zip
-
-- name: install zip and unziped
-  become: true
-  apt:
-    name: [zip, unzip]
-    state: latest
-    update_cache: yes
+    src: ~/project/artifact.tar.gz
+    dest: ~/artifact.tar.gz
 
 - name: unzipped backend
   shell: |
-    ls
-    unzip backend.zip
+    mkdir backend
+    tar -C backend -xf artifact.tar.gz
 
 - name: start the app
   shell: |
