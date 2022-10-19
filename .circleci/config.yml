@@ -287,6 +287,7 @@ jobs:
           name: Get backend url
           command: |
             cd .circleci/ansible
+            echo "34.201.91.206" >> inventory.txt
             export BACKEND_IP=$(grep -v '^\[' inventory.txt)
             echo $(grep -v '^\[' inventory.txt)
       - run:
