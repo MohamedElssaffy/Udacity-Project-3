@@ -1,8 +1,8 @@
 ---
-- name: copy backend zipped file
-  copy:
-    src: ~/project/artifact.tar.gz
-    dest: ~/artifact.tar.gz
+# - name: copy backend zipped file
+#   copy:
+#     src: ~/project/artifact.tar.gz
+#     dest: ~/artifact.tar.gz
 
 - name: 'Create backend directory'
   file:
