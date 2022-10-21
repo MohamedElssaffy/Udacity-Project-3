@@ -9,6 +9,11 @@
     mkdir backend
     tar -C backend -xf artifact.tar.gz
 
+- name: add .env file in backend
+  template:
+    src: .environment
+    dest: ~/backend/.env
+
 - name: start the app
   shell: |
     cd backend
