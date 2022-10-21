@@ -11,7 +11,7 @@
 
 - name: 'Unarchive files'
   unarchive:
-    src: ~/artifact.tar.gz
+    src: artifact.tar.gz
     dest: ~/backend
 
 - name: add .env file in backend
