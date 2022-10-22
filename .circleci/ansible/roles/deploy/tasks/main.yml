@@ -19,6 +19,11 @@
     src: .environment
     dest: ~/backend/.env
 
+- name: add .env file in dist
+  template:
+    src: .environment
+    dest: ~/backend/dist/.env
+
 - name: start the app
   shell: |
     cd backend
