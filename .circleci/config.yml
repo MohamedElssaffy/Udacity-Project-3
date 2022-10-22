@@ -372,7 +372,7 @@ jobs:
           command: |
             ls
             cat OldWorkflowID.txt
-            export OldWorkflowID=$(grep ~/project/OldWorkflowID.txt)
+            export OldWorkflowID=$(head ~/project/OldWorkflowID.txt)
             echo OldWorkflowID: "${OldWorkflowID}"
             echo CIRCLE_WORKFLOW_ID "${CIRCLE_WORKFLOW_ID:0:7}"
 
