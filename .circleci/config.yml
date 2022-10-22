@@ -358,9 +358,13 @@ jobs:
 
   cleanup:
     docker:
-      - image: amazon/aws-cli
+      - image: python:3.7-alpine3.11
     steps:
       - checkout
+      - run:
+          name: add dependencies
+          command: |
+            pip3 install awscli
       - attach_workspace:
           at: ~/
       - run:
