@@ -342,7 +342,7 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - project/OldWorkflowID.txt
+            - ~/project/OldWorkflowID.txt
       - run:
           name: Update cloudfront distribution
           command: |
@@ -371,7 +371,8 @@ jobs:
           name: Get old stack workflow id & Remove old stacks and files
           command: |
             ls
-            export OldWorkflowID=$(grep ~/OldWorkflowID.txt)
+            cat OldWorkflowID.txt
+            export OldWorkflowID=$(grep ~/project/OldWorkflowID.txt)
             echo OldWorkflowID: "${OldWorkflowID}"
             echo CIRCLE_WORKFLOW_ID "${CIRCLE_WORKFLOW_ID:0:7}"
 
