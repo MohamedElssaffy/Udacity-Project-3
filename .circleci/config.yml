@@ -371,7 +371,7 @@ jobs:
           name: Get old stack workflow id & Remove old stacks and files
           command: |
             ls
-            export OldWorkflowID=$(grep ~/project/OldWorkflowID.txt)
+            export OldWorkflowID=$(grep ~/OldWorkflowID.txt)
             echo OldWorkflowID: "${OldWorkflowID}"
             echo CIRCLE_WORKFLOW_ID "${CIRCLE_WORKFLOW_ID:0:7}"
 
