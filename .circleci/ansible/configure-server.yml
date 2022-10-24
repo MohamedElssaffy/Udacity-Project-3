@@ -31,3 +31,4 @@
     PORT: "{{ lookup('env', 'PORT')}}"
   roles:
     - configure-server
+    - configure-prometheus-node-exporter

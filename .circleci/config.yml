@@ -179,7 +179,7 @@ jobs:
             apk add --update ansible
             pip3 install awscli
       - run:
-          name: Configure server
+          name: Configure server and add node_exporter for prometheus
           command: |
             cd .circleci/ansible
             ansible-playbook -i inventory.txt configure-server.yml
